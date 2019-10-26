@@ -1,2 +1,2 @@
-# net_architect
+# Net Architect
 Neural Network Designer 
