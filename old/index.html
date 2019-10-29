@@ -1,0 +1,103 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>Net Architect</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+   <link type="text/css" rel="stylesheet" href="./css/aristo/jquery-ui-1.8.16.custom.css" />
+   <link type="text/css" rel="stylesheet" href="./css/jquery.layout.css" />
+   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/jquery-ui.js"></script>
+    <script src="./lib/jquery.browser.js"></script>
+    <script src="./lib/jquery.layout.js"></script>
+
+    <script src="node_modules/draw2d/dist/draw2d.js"></script>
+
+    <script src="scripts/MyInterceptorPolicy.js"></script>
+    <script src="./gui/Application.js"></script>
+	  <script src="./gui/View.js"></script>
+    <script src="./gui/Toolbar.js"></script>
+    <script src="./gui/HoverConnection.js"></script>
+    <script src="scripts/CustomFigure.js"></script>
+    <script src="scripts/DecoratedInputPort.js"></script>
+    <script src="scripts/MarkerStateAFigure.js"></script>
+    <script src="scripts/MarkerStateBFigure.js"></script>
+    <script src="scripts/MarkerFigure.js"></script>
+    <script src="scripts/CopyInterceptorPolicy.js"></script>
+    <script src="scripts/simpleShape.js"></script>
+    <script src="./scripts/Layer.js"></script>
+    <script src="scripts/main.js"></script>
+
+</head>
+
+<body id="container">
+
+   <div id="content">
+   		<div id="toolbar">
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                <span class="ui-button-text">Download</span>
+            </button>
+        </div>
+   		<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
+   </div>
+
+   <div id="navigation" class="">
+       <button class="accordion" >Input/Output</button>
+       <div class="panel" id="layer-dropdown">
+           <div data-shape="Layer" class="palette_node_element draw2d_droppable">Input</div>
+           <div data-shape="Layer" class="palette_node_element draw2d_droppable">Output</div>
+       </div>
+        <button class="accordion" >Dense</button>
+        <div class="panel" id="layer-dropdown">
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Dense</div>
+        </div>
+        <button class="accordion" >Convolutional</button>
+        <div class="panel" id="layer-dropdown">
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Conv1D</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Conv2D</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Conv3D</div>
+        </div>
+
+        <button class="accordion" >Activations</button>
+        <div class="panel" id="layer-dropdown">
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Sigmoid</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">ReLU</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">LeakyReLU</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Tanh</div>
+        </div>
+       <button class="accordion" >Pretrained</button>
+       <div class="panel" id="layer-dropdown">
+           <div data-shape="Layer" class="palette_node_element draw2d_droppable">VGG19</div>
+       </div>
+        <button class="accordion" >Helper</button>
+        <div class="panel" id="layer-dropdown">
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Flatten</div>
+            <div data-shape="Layer" class="palette_node_element draw2d_droppable">Unflatten</div>
+        </div>
+
+
+   </div>
+   <div id="configure" >
+   </div>
+
+</body>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+</html>

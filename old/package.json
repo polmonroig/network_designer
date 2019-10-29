@@ -1,0 +1,7 @@
+{
+  "name": "network_designer",
+  "version": "1.0.0",
+  "dependencies": {
+    "draw2d": "latest"
+  }
+}
