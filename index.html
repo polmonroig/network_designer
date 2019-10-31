@@ -36,9 +36,19 @@
 
 <body id="container">
 
+   <div id="download-popup">
+        <div id="download-content">
+            <div id="buttons">
+                <span class="close">&times;</span>
+                <a id="pytorch-button" class="waves-effect waves-light btn-large">Pytorch Model</a>
+                <a id="tensorflow-button" class="waves-effect waves-light btn-large">Tensorflow Model</a>
+            </div>
+        </div>
+   </div>
+
    <div id="content">
    		<div id="toolbar">
-            <a class="waves-effect waves-light btn-large">Download Model</a>
+            <a id="download" class="waves-effect waves-light btn-large">Download Model</a>
         </div>
    		<div id="canvas" class="" style="width:3000px; height:3000px;"></div>
    </div>

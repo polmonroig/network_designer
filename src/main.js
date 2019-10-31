@@ -55,7 +55,26 @@ document.addEventListener("DOMContentLoaded",function () {
       app.view.installEditPolicy(new draw2d.policy.canvas.SnapToInBetweenEditPolicy());
       app.view.installEditPolicy(new draw2d.policy.canvas.SnapToCenterEditPolicy());
 
+      //======================
+      // Download popup
+      var modal = document.getElementById("download-popup");
+      var btn = document.getElementById("download");
+      var span = document.getElementsByClassName("close")[0];
 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      //============================
 });
 
 
