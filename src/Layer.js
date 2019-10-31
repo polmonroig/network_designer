@@ -37,7 +37,8 @@ Layer = draw2d.shape.basic.Rectangle.extend({
     NAME : "Layer",
 
     init : function(type, file){
-        this._super({width:250, height:60, radius:10, bgColor:new draw2d.util.Color(0xE8,0xE8,0xE8), resizeable:false});
+        this._super({width:250, height:60, radius:12, bgColor:new draw2d.util.Color(0xE8,0xE8,0xE8), resizeable:false, stroke:3});
+
         this.output =  new draw2d.shape.basic.Label({text:"", stroke:0, fontSize:18});
         this.add(this.output, new draw2d.layout.locator.BottomLocator());
         this.label = new draw2d.shape.basic.Label({text:"", stroke:0, fontSize:18});
@@ -58,9 +59,11 @@ Layer = draw2d.shape.basic.Rectangle.extend({
         this.add(icon, new draw2d.layout.locator.XYRelPortLocator(5,15));
         this.index = current_layer_index;
         this.attributes = null;
+
     },
     setFocus: function() {
       $("input").blur();
+
     },
     setLabel: function (text) {
       if (text.length > 16) {
@@ -90,18 +93,41 @@ Layer = draw2d.shape.basic.Rectangle.extend({
             cmd.setConnection(additionalConnection);
             stack.execute(cmd);
         }
+
     },
 
     onClick: function(){
         $('#configure').empty();
-        $('#configure').append('Name: <input id="name" type="text" name="" value="' + this.label.text + '"><br>');
+        $('#configure').append(`
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" class="validate" type="text" name="" value=` + this.label.text + `></input>
+                    <label class="active" for="email">Name</label>
+                </div>
+            </div>`);
         for(var i = 0; i < this.attributes.length; ++i){
             if(this.attributes[i][1].length > 1){
-                $('#configure').append(this.attributes[i][0] + ': <input type="text" name="" value="' + this.attributes[i][0] + '"><br>');
-                $('#configure').append('     <input type="text" name="" value="' + this.attributes[i][1] + '"><br>');
+                $('#configure').append(`
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="validate" type="text" name="" value="` + "" + `">
+                            <label for="email">`+ this.attributes[i][0] +`</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input class="validate" type="text" name="" value="` + "" + `">
+                            <label for="email">`+ this.attributes[i][0] +`</label>
+                        </div>
+                    </div>`);
+
             }
             else{
-                $('#configure').append(this.attributes[i][0] + ': <input type="text" name="" value="' + this.attributes[i][1] + '"><br>');
+                $('#configure').append(`
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="validate" type="text" name="" value="` + "" + `">
+                            <label for="email">` + this.attributes[i][0] + `</label>
+                        </div>
+                    </div>`);
             }
 
         }

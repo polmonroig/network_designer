@@ -18,6 +18,7 @@ input{
 }
 
 
+
 #container{
  padding:0px;
  margin:0px;
@@ -32,7 +33,7 @@ input{
 #navigation{
  padding:0px;
  margin:0px;
- background : transparent url(background_drak.jpg);
+ background-color: #ffffff;
  text-align: center;
 }
 
@@ -40,12 +41,12 @@ input{
     padding: 10px;
     margin: 0px;
     width: 260px;
-    background: transparent url(background_drak.jpg);
+    background-color: #ffffff;
     text-align: center;
 }
 
 .panel {
-  padding: 0 18px;
+  padding: 0 5px;
   background-color: white;
   max-height: 0;
   overflow: hidden;
@@ -73,27 +74,22 @@ input{
   transition: 0.4s;
 }
 
+
+
 .active:after {
   content: "\2212";
 }
 
-.active, .accordion:hover {
-  background-color: #ccc;
+.accordion:hover {
+  background-color: #26a69a;
 }
 
 #toolbar{
-background: #cecece; /* Old browsers */
-background: -moz-linear-gradient(top,  #cecece 0%, #a8a8a8 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cecece), color-stop(100%,#a8a8a8)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #cecece 0%,#a8a8a8 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #cecece 0%,#a8a8a8 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #cecece 0%,#a8a8a8 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #cecece 0%,#a8a8a8 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cecece', endColorstr='#a8a8a8',GradientType=0 ); /* IE6-9 */
+ background-color: #FFFFFF;
  padding:8px;
  margin:0px;
- height:50px;
- border-bottom: 1px solid #515151;
+ height:70px !important;
+ border-color: #FFFFFF;
 }
 
 
@@ -123,18 +119,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cecece', end
  margin:0px;
 }
 
+.icon{
+    width: 25px;
+    height: 25px;
+}
+
 
 
 .palette_node_element{
- border:1px solid gray;
+ border:2px solid #d4d4d4;
  background-color: #f3f3f3;
  padding:10px;
  cursor:move;
- width:80px;
- margin: 30px auto 30px auto;
+ width:160px;
+ margin: 5px auto 5px auto;
  text-align:center;
  align:center;
- border-radius: 5px;
+
 }
 
 .shadow {

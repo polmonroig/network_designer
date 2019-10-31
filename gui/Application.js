@@ -1,8 +1,6 @@
-import draw2d from 'draw2d/src/packages'
-
 // declare the namespace for this layer_designer
-let layer_designer = {};
-let defaultRouter = new draw2d.layout.connection.SplineConnectionRouter();
+var layer_designer = {};
+var defaultRouter = new draw2d.layout.connection.SplineConnectionRouter();
 
 layer_designer.Application = Class.extend(
 {

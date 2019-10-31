@@ -46,12 +46,19 @@ layer_designer.View = draw2d.Canvas.extend({
         var type = $(droppedDomNode).data("shape");
         var figure = eval("new "+type+"();");
 
-		console.log("Add: " + figure.name);
 		console.log("Type: " + droppedDomNode.text());
-		figure.setLabel(droppedDomNode.text() + "_" + current_layer_index);
+
+		figure.setLabel(droppedDomNode.text() + "_" + layer_counter[droppedDomNode.text()]);
+		figure.attributes = layer_attributes[droppedDomNode.text()];
+        current_layer_index++;
+        layer_counter[droppedDomNode.text()]++;
+        console.log("Attributes: " + figure.attributes);
+
 		getPortConnections();
         // create a command for the undo/redo support
         var command = new draw2d.command.CommandAdd(this, figure, x, y);
         this.getCommandStack().execute(command);
-    }
+		figure.onClick();
+    },
+
 });

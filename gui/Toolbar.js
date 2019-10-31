@@ -18,7 +18,9 @@ layer_designer.Toolbar = Class.extend({
 
 		// Inject the UNDO Button and the callbacks
 		//
-		this.undoButton  = $("<button>Undo</button>");
+		this.delimiter  = $("<span class='toolbar_delimiter'>&nbsp;</span>");
+		this.html.append(this.delimiter);
+		/*this.undoButton  = $("<a class='waves-effect waves-light btn-large'>Undo</a>");
 		this.html.append(this.undoButton);
 		this.undoButton.button().click($.proxy(function(){
 		       this.view.getCommandStack().undo();
@@ -26,26 +28,25 @@ layer_designer.Toolbar = Class.extend({
 
 		// Inject the REDO Button and the callback
 		//
-		this.redoButton  = $("<button>Redo</button>");
+		this.redoButton  = $("<a class='waves-effect waves-light btn-large'>Redo</a>");
 		this.html.append(this.redoButton);
 		this.redoButton.button().click($.proxy(function(){
 		    this.view.getCommandStack().redo();
 		},this)).button( "option", "disabled", true );
 
-		this.delimiter  = $("<span class='toolbar_delimiter'>&nbsp;</span>");
-		this.html.append(this.delimiter);
 
 		// Inject the DELETE Button
 		//
-		this.deleteButton  = $("<button>Delete</button>");
+		this.deleteButton  = $("<a class='waves-effect waves-light btn-large'>Delete</a>");
 		this.html.append(this.deleteButton);
 		this.deleteButton.button().click($.proxy(function(){
 			var node = this.view.getPrimarySelection();
 			var command= new draw2d.command.CommandDelete(node);
 			this.view.getCommandStack().execute(command);
-		},this)).button( "option", "disabled", true );
+		},this)).button( "option", "disabled", true );*/
 
-		
+
+
 	},
 
 	/**
@@ -58,7 +59,7 @@ layer_designer.Toolbar = Class.extend({
      * @param {draw2d.Figure} event.figure
 	 */
 	onSelectionChanged : function(emitter, event){
-		this.deleteButton.button( "option", "disabled", event.figure===null );
+		//this.deleteButton.button( "option", "disabled", event.figure===null );
 	},
 
 	/**
@@ -72,7 +73,7 @@ layer_designer.Toolbar = Class.extend({
 	 **/
 	stackChanged:function(event)
 	{
-		this.undoButton.button( "option", "disabled", !event.getStack().canUndo() );
-		this.redoButton.button( "option", "disabled", !event.getStack().canRedo() );
+		//this.undoButton.button( "option", "disabled", !event.getStack().canUndo() );
+		//this.redoButton.button( "option", "disabled", !event.getStack().canRedo() );
 	}
 });

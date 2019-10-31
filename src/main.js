@@ -7,7 +7,7 @@ var layer_attributes = {
     'Unflatten' : [],
     'Conv1D' : [['in_channels', 0]],
     'Conv2D' : [['in_channels', 0], ['out_channels', 0], ['kernel_size', [0, 0]], ['stride', [1, 1]], ['padding', 0], ['dilation', 1], ['bias',true]],
-    'Dense' : [['in_features', 0], ['out_features', 0], ['bias', true], ['kernel_init', 'default'], ['bias_init', 'default']]
+    'Dense' : [['in_features', 0], ['out_features', 0], ['bias', true], ['kernel_init', 0], ['bias_init', 0]]
 };
 
 var layer_counter = {
@@ -60,5 +60,3 @@ function getPortConnections(){
 function dropDownFunction() {
   $(".layer-dropdown").css({"visibility": "visible"})
 }
-
-
