@@ -49,7 +49,7 @@ layer_designer.View = draw2d.Canvas.extend({
 		console.log("Type: " + droppedDomNode.text());
 
 		figure.setLabel(droppedDomNode.text() + "_" + layer_counter[droppedDomNode.text()]);
-		figure.attributes = layer_attributes[droppedDomNode.text()];
+		figure.attributes = layer_attributes[droppedDomNode.text()].slice();
         current_layer_index++;
         layer_counter[droppedDomNode.text()]++;
         console.log("Attributes: " + figure.attributes);

@@ -7,7 +7,12 @@ var layer_attributes = {
     'Unflatten' : [],
     'Conv1D' : [['in_channels', 0]],
     'Conv2D' : [['in_channels', 0], ['out_channels', 0], ['kernel_size', [0, 0]], ['stride', [1, 1]], ['padding', 0], ['dilation', 1], ['bias',true]],
-    'Dense' : [['in_features', 0], ['out_features', 0], ['bias', true], ['kernel_init', 0], ['bias_init', 0]]
+    'Dense' : [['in_features', 0], ['out_features', 0], ['bias', true], ['kernel_init', 0], ['bias_init', 0]],
+    'VGG19': [],
+    'Sigmoid': [],
+    'ReLU': [],
+    'LeakyReLU': [],
+    'Tanh': []
 };
 
 var layer_counter = {
@@ -17,8 +22,15 @@ var layer_counter = {
     'Conv2D' : 0,
     'Dense' : 0,
     'Flatten' : 0,
-    'Unflatten' : 0
+    'Unflatten' : 0,
+    'VGG19': 0,
+    'Sigmoid': 0,
+    'ReLU': 0,
+    'LeakyReLU': 0,
+    'Tanh': 0
 };
+
+
 
 //var tensorflow_layer_attributes = {
 //    conv1d : {

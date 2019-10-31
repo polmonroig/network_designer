@@ -37,7 +37,7 @@ Layer = draw2d.shape.basic.Rectangle.extend({
     NAME : "Layer",
 
     init : function(type, file){
-        this._super({width:250, height:60, radius:12, bgColor:new draw2d.util.Color(0xE8,0xE8,0xE8), resizeable:false, stroke:3});
+        this._super({width:250, height:60, radius:12, bgColor:new draw2d.util.Color(0xE8,0xE8,0xE8), resizeable:false, stroke:0});
 
         this.output =  new draw2d.shape.basic.Label({text:"", stroke:0, fontSize:18});
         this.add(this.output, new draw2d.layout.locator.BottomLocator());
@@ -59,11 +59,9 @@ Layer = draw2d.shape.basic.Rectangle.extend({
         this.add(icon, new draw2d.layout.locator.XYRelPortLocator(5,15));
         this.index = current_layer_index;
         this.attributes = null;
-
     },
     setFocus: function() {
       $("input").blur();
-
     },
     setLabel: function (text) {
       if (text.length > 16) {
@@ -93,11 +91,12 @@ Layer = draw2d.shape.basic.Rectangle.extend({
             cmd.setConnection(additionalConnection);
             stack.execute(cmd);
         }
-
     },
 
     onClick: function(){
+        selected_layer = this.index;
         $('#configure').empty();
+        console.log(this);
         $('#configure').append(`
             <div class="row">
                 <div class="input-field col s6">
@@ -106,32 +105,19 @@ Layer = draw2d.shape.basic.Rectangle.extend({
                 </div>
             </div>`);
         for(var i = 0; i < this.attributes.length; ++i){
-            if(this.attributes[i][1].length > 1){
-                $('#configure').append(`
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input class="validate" type="text" name="" value="` + "" + `">
-                            <label for="email">`+ this.attributes[i][0] +`</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input class="validate" type="text" name="" value="` + "" + `">
-                            <label for="email">`+ this.attributes[i][0] +`</label>
-                        </div>
-                    </div>`);
 
-            }
-            else{
-                $('#configure').append(`
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input class="validate" type="text" name="" value="` + "" + `">
-                            <label for="email">` + this.attributes[i][0] + `</label>
-                        </div>
-                    </div>`);
-            }
+            $('#configure').append(`
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="`+ i +`" class="validate" type="text" name="" value="`+ this.attributes[i][1] + `">
+                        <label class="active" for="email">` + this.attributes[i][0] + `</label>
+                    </div>
+                </div>`);
+
 
         }
-        $('#name').on('input', function() {
+
+        $("#name").on('input', function() {
             var layers = app.view.getFigures().data;
             for(var i = 0; i < layers.length; ++i){
                 if(layers[i].index == selected_layer){
@@ -139,7 +125,24 @@ Layer = draw2d.shape.basic.Rectangle.extend({
                 }
             }
         });
-        selected_layer = this.index;
+        for(var i = 0; i < this.attributes.length; ++i){
+            this.onAttributeInput(i);
+        }
+
+
+
+    },
+    onAttributeInput: function(attributeName){
+        var id = '#' + attributeName;
+        $(id).on('input', function() {
+            var layers = app.view.getFigures().data;
+            for(var i = 0; i < layers.length; ++i){
+                if(layers[i].index == selected_layer){
+                    layers[i].attributes[parseInt(attributeName)][1] = $(id).val();
+                }
+            }
+        });
     }
+
 
 });
