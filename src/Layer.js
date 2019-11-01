@@ -59,7 +59,16 @@ Layer = draw2d.shape.basic.Rectangle.extend({
         this.add(icon, new draw2d.layout.locator.XYRelPortLocator(5,15));
         this.index = current_layer_index;
         this.attributes = null;
+        this.type = null;
+        this.inputShape = [];
+        this.outputShape = [];
+        this.activation = false;
     },
+
+    getType: function(){
+        return this.type;
+    },
+
     setFocus: function() {
       $("input").blur();
     },
@@ -73,7 +82,6 @@ Layer = draw2d.shape.basic.Rectangle.extend({
       this.label.setText (text);
     },
     onDrop:function(dropTarget, x, y, shiftKey, ctrlKey){
-        console.log("onDrop")
         // Activate a "smart insert" If the user drop this figure on connection
         //
         if(dropTarget instanceof draw2d.Connection){
@@ -96,7 +104,7 @@ Layer = draw2d.shape.basic.Rectangle.extend({
     onClick: function(){
         selected_layer = this.index;
         $('#configure').empty();
-        console.log(this);
+
         $('#configure').append(`
             <div class="row">
                 <div class="input-field col s6">
@@ -134,15 +142,47 @@ Layer = draw2d.shape.basic.Rectangle.extend({
     },
     onAttributeInput: function(attributeName){
         var id = '#' + attributeName;
-        $(id).on('input', function() {
+        $(id).on('input', () => {
             var layers = app.view.getFigures().data;
             for(var i = 0; i < layers.length; ++i){
                 if(layers[i].index == selected_layer){
                     layers[i].attributes[parseInt(attributeName)][1] = $(id).val();
+                    this.setInputShape();
+                    this.setOutputShape();
+                    getPortConnections();
                 }
             }
         });
-    }
+    },
 
+    getInputShape: function(){
+        return this.inputShape;
+    },
+
+    getOutputShape: function(){
+        return this.outputShape;
+    },
+
+    setInputShape: function(){
+        if(this.type == "Dense"){
+            this.inputShape = [this.attributes[0][1]];
+        }
+        else if(this.type == "Input"){
+            this.inputShape = [this.attributes[0][1]];
+        }
+    },
+
+    setOutputShape: function(){
+        if(this.type == "Dense"){
+            this.outputShape = [this.attributes[1][1]];
+        }
+        else if(this.type == "Input"){
+            this.outputShape = [this.attributes[0][1]];
+        }
+    },
+
+    isActivation: function(){
+        return this.activation;
+    }
 
 });

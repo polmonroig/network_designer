@@ -24,7 +24,6 @@ var createConnection=function(sourcePort, targetPort){
         outlineStroke:0
       });
     });
-
     return conn;
 
 };

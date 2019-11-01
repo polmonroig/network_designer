@@ -1,5 +1,22 @@
 
 
+const deepCopy = (arr) => {
+  let copy = [];
+  arr.forEach(elem => {
+    if(Array.isArray(elem)){
+      copy.push(deepCopy(elem))
+    }else{
+      if (typeof elem === 'object') {
+        copy.push(deepCopyObject(elem))
+    } else {
+        copy.push(elem)
+      }
+    }
+  })
+  return copy;
+}
+
+
 layer_designer.View = draw2d.Canvas.extend({
 
 	init:function(id){
@@ -46,13 +63,20 @@ layer_designer.View = draw2d.Canvas.extend({
         var type = $(droppedDomNode).data("shape");
         var figure = eval("new "+type+"();");
 
-		console.log("Type: " + droppedDomNode.text());
-
+		figure.type = droppedDomNode.text();
 		figure.setLabel(droppedDomNode.text() + "_" + layer_counter[droppedDomNode.text()]);
-		figure.attributes = layer_attributes[droppedDomNode.text()].slice(0);
+
+		figure.attributes = deepCopy(layer_attributes[droppedDomNode.text()]);
+		figure.setInputShape();
+		figure.setOutputShape();
         current_layer_index++;
         layer_counter[droppedDomNode.text()]++;
-        console.log("Attributes: " + figure.attributes);
+		if(droppedDomNode.text() == "Sigmoid" ||
+		   droppedDomNode.text() == "ReLU" ||
+		   droppedDomNode.text() == "LeakyReLU" ||
+		   droppedDomNode.text() == "Tanh" ){
+		    figure.activation = true;
+	   	}
 
 		getPortConnections();
         // create a command for the undo/redo support

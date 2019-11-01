@@ -71,7 +71,8 @@ layer_designer.Application = Class.extend(
 	    conn.setOutlineColor("#303030");
 	    conn.setStroke(3);
 	    conn.setRadius(5);
-	    conn.setColor('#00A8F0');
+	    conn.setColor('#26a69a');
+        getPortConnections();
 	    return conn;
 	},
 
