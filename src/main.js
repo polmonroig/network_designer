@@ -32,6 +32,23 @@ var layer_counter = {
 
 
 
+
+function download(filename, text) {
+
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+
+
 //var tensorflow_layer_attributes = {
 //    conv1d : {
 
@@ -58,6 +75,14 @@ function arraysEqual(a, b) {
 
 
 document.addEventListener("DOMContentLoaded",function () {
+
+    document.getElementById("pytorch-button").addEventListener("click", function(){
+        // Generate download of hello.txt file with some content
+        var text = "import torch";
+        var filename = "network.py";
+
+        download(filename, text);
+    }, false);
 
      app  = new layer_designer.Application();
 
