@@ -1,6 +1,6 @@
-var app = null;
+let app = null;
 
-var layer_attributes = {
+let layer_attributes = {
     'Input' : [['shape', "0, 0"], ['batch_size', "0"], ['name', 'None'], ['dtype', 'None']],
     'Output' : [],
     'Flatten' : [],
@@ -15,7 +15,7 @@ var layer_attributes = {
     'Tanh': []
 };
 
-var layer_counter = {
+let layer_counter = {
     'Input' : 0,
     'Output' : 0,
     'Conv1D' : 0,
@@ -65,7 +65,7 @@ function download(filename, text) {
 function arraysEqual(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;
-    if (a.length != b.length) return false;
+    if (a.length !== b.length) return false;
 
     for (var i = 0; i < a.length; ++i) {
     if (a[i] !== b[i]) return false;

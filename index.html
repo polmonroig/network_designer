@@ -1,4 +1,4 @@
-﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
     <head>
         <!------------------------------------------------------------------
          HEAD: Define metadata and include style sheets and required libraries
@@ -26,20 +26,22 @@
         <!-- Include draw2d library -->
         <script src="lib/draw2d/dist/draw2d.js"></script>
 
-        <script src="src/MyInterceptorPolicy.js"></script>
+        <!-- Include GUI interaction files -->
         <script src="./gui/Application.js"></script>
         <script src="./gui/View.js"></script>
         <script src="./gui/Toolbar.js"></script>
         <script src="./gui/HoverConnection.js"></script>
-        <script src="src/CustomFigure.js"></script>
-        <script src="src/DecoratedInputPort.js"></script>
-        <script src="src/MarkerStateAFigure.js"></script>
-        <script src="src/MarkerStateBFigure.js"></script>
-        <script src="src/MarkerFigure.js"></script>
-        <script src="src/CopyInterceptorPolicy.js"></script>
 
+        <!-- Include draw2d node extensions (policies and decorations)-->
+        <script src="src/extensions/MyInterceptorPolicy.js"></script>
+        <script src="src/extensions/CustomFigure.js"></script>
+        <script src="src/extensions/DecoratedInputPort.js"></script>
+        <script src="src/extensions/MarkerStateAFigure.js"></script>
+        <script src="src/extensions/MarkerStateBFigure.js"></script>
+        <script src="src/extensions/MarkerFigure.js"></script>
+        <script src="src/extensions/CopyInterceptorPolicy.js"></script>
 
-        <script src="src/simpleShape.js"></script>
+        <!-- Include main layer files -->
         <script src="./src/Layer.js"></script>
         <script src="src/main.js"></script>
 
@@ -72,7 +74,7 @@
             </div>
             <div id="canvas" class="" style="width:3000px; height:3000px;"></div>
         </div>
-
+        <!-- FIX layer-dropdown id-->
         <!-- Left layer selection side bar -->
         <div id="navigation" class="">
            <h3 class="noselect">Layer Designer</h3>
