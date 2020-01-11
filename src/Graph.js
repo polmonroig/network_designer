@@ -16,11 +16,11 @@ class Graph{
             let id = data[i].index;
             this.nodes[id] = new Node(id, data[i]);
             // initialize empty array
-            this.graph = [];
+            this.graph[id] = [];
             let connections = data[i].outputPorts.data[0].connections.data;
             for(let j = 0; j < connections.length; ++j){
                 let targetNode = connections[j].targetPort.parent;
-                this.graph[id].add(targetNode.index);
+                this.graph[id].push(targetNode.index);
             }
         }
 
