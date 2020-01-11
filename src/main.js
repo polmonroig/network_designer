@@ -152,3 +152,9 @@ function getPortConnections(){
 function dropDownFunction() {
   $(".layer-dropdown").css({"visibility": "visible"})
 }
+
+// This function is for debugging purposes !!!
+function debug(){
+    let network = new Graph(app.view.getFigures().data);
+    return network;
+}
