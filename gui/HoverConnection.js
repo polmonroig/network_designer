@@ -26,16 +26,7 @@ var HoverConnection = draw2d.Connection.extend({
         });
     },
 
-    /**
-     * required to receive dragEnter/dragLeave request.
-     * This figure ignores drag/drop events if it is not a valid target
-     * for the draggedFigure
-     *
-     * @param draggedFigure
-     * @returns {HoverConnection}
-     */
-    delegateTarget: function(draggedFigure)
-    {
+    delegateTarget: function(draggedFigure) {
         return this;
     }
 });

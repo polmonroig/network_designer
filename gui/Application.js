@@ -1,18 +1,11 @@
 // declare the namespace for this layer_designer
-var layer_designer = {};
-var defaultRouter = new draw2d.layout.connection.SplineConnectionRouter();
+let layer_designer = {};
+let defaultRouter = new draw2d.layout.connection.SplineConnectionRouter();
 
-layer_designer.Application = Class.extend(
-{
+layer_designer.Application = Class.extend({
     NAME : "layer_designer.Application",
 
-    /**
-     * @constructor
-     *
-     * @param {String} canvasId the id of the DOM element to use as paint container
-     */
-    init : function()
-    {
+    init : function() {
 
 
 	      this.view    = new layer_designer.View("canvas");
@@ -65,7 +58,7 @@ layer_designer.Application = Class.extend(
 	},
     createConnection: function(){
 
-	    var conn = new draw2d.Connection();
+	    let conn = new draw2d.Connection();
 	    conn.setRouter(defaultRouter);
 	    conn.setOutlineStroke(1);
 	    conn.setOutlineColor("#303030");
