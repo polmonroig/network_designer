@@ -46,9 +46,12 @@
         <!------------------------------------------------------------------
         BODY: Contains the structure of the application and the following components
             1. Popup download window
-            
+            2. Upper toolbar with download button
+            3. Left layer side bar
+            4. Right side layer configuration bar
         -------------------------------------------------------------------->
 
+        <!-- Popup download window -->
         <div id="download-popup">
             <div id="download-content">
                 <div id="buttons">
@@ -57,16 +60,18 @@
                     <a id="tensorflow-button" class="waves-effect waves-light btn-large">Tensorflow Model</a>
                 </div>
             </div>
-       </div>
+        </div>
 
-       <div id="content">
+        <!-- Upper toolbar -->
+        <div id="content">
             <div id="toolbar">
                 <a id="download" class="waves-effect waves-light btn-large">Download Model</a>
             </div>
             <div id="canvas" class="" style="width:3000px; height:3000px;"></div>
-       </div>
+        </div>
 
-       <div id="navigation" class="">
+        <!-- Left layer selection side bar -->
+        <div id="navigation" class="">
            <h3 class="noselect">Layer Designer</h3>
            <button class="accordion" >Input/Output</button>
            <div class="panel" id="layer-dropdown">
@@ -100,28 +105,32 @@
                 <div data-shape="Layer" class="palette_node_element draw2d_droppable">Flatten</div>
                 <div data-shape="Layer" class="palette_node_element draw2d_droppable">Unflatten</div>
             </div>
+        </div>
 
-
-       </div>
-            <form class="col s12" id="configure" ></form>
-
+        <!-- Layer configuration bar -->
+        <form class="col s12" id="configure" ></form>
 
     </body>
-    <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
+    <!-- Configures accordion elements -->
+    <script>
+        let acc = document.getElementsByClassName("accordion");
+        let i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
         }
-      });
-    }
     </script>
+
+    <!-- Includes materialize style to application -->
     <script type="text/javascript" src="src/materialize.js"></script>
+
 </html>
