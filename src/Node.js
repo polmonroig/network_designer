@@ -8,6 +8,7 @@ class Node{
         this.name = info.label.text;
         this.type = info.type;
         this.attributes = info.attributes;
+        this.info = info;
     }
 
     getID(){
