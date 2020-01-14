@@ -43,7 +43,7 @@ class Template{
 
     addCalls(){
         for(let i = 0; i < this.layerNames.length; ++i){
-            thi
+            this.calls += "x = " + this.layerNames[i] + "(x)\n";
         }
     }
 
@@ -51,6 +51,7 @@ class Template{
     build(){
         this.head = this.head + this.subclass + this.headEnd;
         this.init = this.init + this.layers + this.initEnd;
+        this.addCalls();
         this.call = this.call + this.callName + this.callParameters + this.calls + this.callEnd; // needs
         this.file = this.head + this.init + this.call;
     }
