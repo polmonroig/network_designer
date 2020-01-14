@@ -41,17 +41,14 @@ class Template{
         this.layers += "";
     }
 
-    addCalls(){
-        for(let i = 0; i < this.layerNames.length; ++i){
-            this.calls += "x = " + this.layerNames[i] + "(x)\n";
-        }
+    addCall(){
+        this.calls += "";
     }
 
     // this class concatenates all the strings
     build(){
         this.head = this.head + this.subclass + this.headEnd;
         this.init = this.init + this.layers + this.initEnd;
-        this.addCalls();
         this.call = this.call + this.callName + this.callParameters + this.calls + this.callEnd; // needs
         this.file = this.head + this.init + this.call;
     }
@@ -65,12 +62,17 @@ class Template{
 class TensorflowTemplate extends Template{
     constructor(){
         super();
-        this.imports = "from tensorflow.keras import Model\n";
+        this.imports = "from tensorflow.keras import Model\n" +
+                       "import tensorflow.keras.layers as layers\n";
         this.subclass = "Model";
     }
 
-    addLayer(parameters) {
+    addCall(){
 
+    }
+
+    addLayer(parameters) {
+        this.layers += "layer = layers.Dense()\n";
     }
 }
 
@@ -84,6 +86,5 @@ class PytorchTemplate extends Template{
 
     addLayer(parameters) {
         this.layers += "layer = nn.Linear()\n";
-        this.layerNames.push("layer");
     }
 }
