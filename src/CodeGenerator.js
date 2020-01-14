@@ -1,6 +1,10 @@
 /**
  * This class is made to convert the visual graph into a file
  * */
+
+SPACE = " ";
+ENDLINE = "\n";
+
 class CodeGenerator{
 
     constructor(){
@@ -10,6 +14,10 @@ class CodeGenerator{
 
     setGraph(graph){
         this.graph = graph;
+    }
+
+    addLine(parameters){
+
     }
 
     generatePytorchFile(){
