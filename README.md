@@ -20,7 +20,9 @@ This are the external libraries that I used, they are included in the <b>lib/</b
 Draw2D  (for the diagrams)  
 JQuery  
 Materialize (for the material style)
-``` 
+```
+## Demo website ##
+The application is available through my website [here](http://polmonroig.com/designer/).
 
 ## Demo image ##
 ![Alt text](images/demo.png?raw=true "App_demo")
@@ -29,5 +31,5 @@ Materialize (for the material style)
 Pol Monroig Company
 
 ## Acknowledgements ##
-This repo is made possible with the use of [Draw2d](https://github.com/freegroup/draw2d), a javascript library 
-that enables the interaction and diagram visualization. 
+This repo is made possible with the use of [Draw2d](https://github.com/freegroup/draw2d), a javascript library
+that enables the interaction and diagram visualization.
