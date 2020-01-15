@@ -31,10 +31,10 @@ class MinHeap{
         let element = this.heap[pos];
         while(2 * pos <= this.size){
             let child = 2 * pos;
-            if(child !== this.size && this.heap[child] < this.heap[child + 1]){
+            if(child !== this.size && this.heap[child] > this.heap[child + 1]){
                 child++;
             }
-            if(element < this.heap[child]){
+            if(element > this.heap[child]){
                 this.heap[pos] = this.heap[child];
             }
             else{
@@ -47,7 +47,7 @@ class MinHeap{
 
     insert_element(pos){
         let newPos = Math.floor(pos / 2);
-        if(newPos > 0 && this.heap[newPos] < this.heap[pos]){
+        if(newPos > 0 && this.heap[newPos] > this.heap[pos]){
             // swap values
             let aux = this.heap[newPos];
             this.heap[newPos] = this.heap[pos];
