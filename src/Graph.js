@@ -34,7 +34,7 @@ class Graph{
     }
 
     hasCycles(){
-        return this.heap.top().getValue() > 0;
+        return this.heap.size > 0 && this.heap.top().getValue() > 0;
     }
 
 
