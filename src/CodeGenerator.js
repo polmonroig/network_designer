@@ -36,7 +36,7 @@ class CodeGenerator{
             // get next layer and remove from queue
             let layer = this.graph.heap.top();
             this.graph.heap.pop();
-            variables.push(variables[i] + i);
+            variables.push(variables[0] + i);
             this.template.addCall(variables[i], variables[i + 1], layer);
 
         }
