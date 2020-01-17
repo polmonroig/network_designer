@@ -38,7 +38,7 @@ class Template{
         this.file = "";
     }
 
-    addLayer(parameters){
+    addLayer(node){
         this.layers += "";
     }
 
@@ -72,8 +72,10 @@ class TensorflowTemplate extends Template{
 
     }
 
-    addLayer(parameters) {
-        this.layers += this.DTAB + "layer = layers.Dense()\n";
+    addLayer(node) {
+
+        this.layers += this.DTAB + node.name +
+                      " = layers."+ node.type + "()\n";
     }
 }
 
@@ -85,7 +87,8 @@ class PytorchTemplate extends Template{
         this.subclass = "nn.Module";
     }
 
-    addLayer(parameters) {
-        this.layers += this.DTAB + "layer = nn.Linear()\n";
+    addLayer(node) {
+        this.layers += this.DTAB + node.name +
+            " = nn."+ node.type + "()\n";
     }
 }

@@ -27,6 +27,12 @@ class CodeGenerator{
     }
 
     generate(){
+        // add layers
+        for(let i = 0; i < this.graph.nNodes; ++i)
+            this.template.addLayer(this.graph.nodes[i]);
+
+
+        // finally build the file
         this.template.build();
     }
 
