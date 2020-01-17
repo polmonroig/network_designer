@@ -28,7 +28,7 @@ class CodeGenerator{
 
     generate(){
         // add graph data
-        let varibles = ["x"];
+        let variables = ["x"];
         for(let i = 0; i < this.graph.nNodes; ++i){
             // add layer
             this.template.addLayer(this.graph.nodes[i]);
@@ -36,8 +36,8 @@ class CodeGenerator{
             // get next layer and remove from queue
             let layer = this.graph.heap.top();
             this.graph.heap.pop();
-            varibles.push(varibles[i] + i);
-            this.template.addCall(varibles[i + 1], varibles[i], layer);
+            variables.push(variables[i] + i);
+            this.template.addCall(variables[i], variables[i + 1], layer);
 
         }
 

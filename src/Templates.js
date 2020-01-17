@@ -44,7 +44,7 @@ class Template{
 
     addCall(inVar, outVar, node){
         this.calls += this.DTAB + outVar +" = "
-            + node.name + "("+ inVar + ")";
+            + node.name + "("+ inVar + ")\n";
     }
 
     // this class concatenates all the strings
