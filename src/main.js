@@ -73,26 +73,38 @@ function arraysEqual(a, b) {
     return true;
 }
 
+function generate_file(generator){
+    let network = new Graph(app.view.getFigures().data);
+    generator.setGraph(network);
+    generator.generate();
+    let text = generator.getFile();
+    console.log(text);
+    if(network.hasCycles()){
+        console.log("Cicles found!!!!");
+    }
+    else{
+        let filename = "network.py";
+        download(filename, text);
+    }
+}
 
 document.addEventListener("DOMContentLoaded",function () {
 
     document.getElementById("pytorch-button").addEventListener("click", function(){
         // Generate download of hello.txt file with some content
 
-        let network = new Graph(app.view.getFigures().data);
         let generator = new CodeGenerator();
-        generator.setGraph(network);
         generator.setTemplate(generator.PYTORCH);
-        generator.generate();
-        let text = generator.getFile();
-        console.log(text);
-        if(network.hasCycles()){
-            console.log("Cicles found!!!!");
-        }
-        else{
-            let filename = "network.py";
-            download(filename, text);
-        }
+        generate_file(generator);
+
+    }, false);
+
+    document.getElementById("tensorflow-button").addEventListener("click", function(){
+        // Generate download of hello.txt file with some content
+
+        let generator = new CodeGenerator();
+        generator.setTemplate(generator.TENSORFLOW);
+        generate_file(generator);
 
     }, false);
 
