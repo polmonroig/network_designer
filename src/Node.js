@@ -9,6 +9,11 @@ class Node{
         this.type = info.type;
         this.attributes = info.attributes;
         this.info = info;
+        this.value = 0;
+    }
+
+    getValue(){
+        return this.value;
     }
 
     getID(){
