@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded",function () {
         generator.setTemplate(generator.PYTORCH);
         generator.generate();
         let text = generator.getFile();
-
+        console.log(text);
         if(network.hasCycles()){
             console.log("Cicles found!!!!");
         }

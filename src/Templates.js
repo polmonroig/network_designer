@@ -17,23 +17,24 @@ class Template{
         // this is the required imports
         this.imports = "";
         this.TAB = "    ";
+        this.DTAB = this.TAB + this.TAB;
         // this is the header of the class
         this.head = "class Model(";
         this.subclass = "";
         this.headEnd = "):\n";
         // this is the constructor of the class
-        this.init = "def __init__(self):\n" + this.TAB +
+        this.init = this.TAB + "def __init__(self):\n" + this.DTAB +
                     "super(Model, self).__init__()\n";
         this.layers = "";
         this.layerNames = [];
         this.initEnd = "\n";
 
         // this is the forward or call function
-        this.call = "def ";
+        this.call = this.TAB + "def ";
         this.callName = "";
         this.callParameters = "(self, x):\n";
         this.calls = "";
-        this.callEnd = this.TAB + "return x \n";
+        this.callEnd = this.DTAB + "return x \n";
         this.file = "";
     }
 
@@ -50,7 +51,7 @@ class Template{
         this.head = this.head + this.subclass + this.headEnd;
         this.init = this.init + this.layers + this.initEnd;
         this.call = this.call + this.callName + this.callParameters + this.calls + this.callEnd; // needs
-        this.file = this.head + this.init + this.call;
+        this.file = this.imports + this.head + this.init + this.call;
     }
 
     getFile(){
@@ -72,7 +73,7 @@ class TensorflowTemplate extends Template{
     }
 
     addLayer(parameters) {
-        this.layers += "layer = layers.Dense()\n";
+        this.layers += this.DTAB + "layer = layers.Dense()\n";
     }
 }
 
@@ -85,6 +86,6 @@ class PytorchTemplate extends Template{
     }
 
     addLayer(parameters) {
-        this.layers += "layer = nn.Linear()\n";
+        this.layers += this.DTAB + "layer = nn.Linear()\n";
     }
 }

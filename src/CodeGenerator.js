@@ -28,11 +28,10 @@ class CodeGenerator{
 
     generate(){
         this.template.build();
-        console.log(this.template.getFile());
     }
 
     getFile(){
-        this.template.getFile();
+        return this.template.getFile();
     }
 
 }
