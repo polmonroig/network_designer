@@ -78,12 +78,16 @@ document.addEventListener("DOMContentLoaded",function () {
 
     document.getElementById("pytorch-button").addEventListener("click", function(){
         // Generate download of hello.txt file with some content
-        var text = "import torch";
-        console.log("Cicles found!!!!");
+        let text = "import torch";
+        let network = new Graph(app.view.getFigures().data);
+        if(network.hasCycles()){
+            console.log("Cicles found!!!!");
+        }
+        else{
+            let filename = "network.py";
+            download(filename, text);
+        }
 
-        let filename = "network.py";
-
-        download(filename, text);
     }, false);
 
      app  = new layer_designer.Application();

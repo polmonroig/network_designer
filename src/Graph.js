@@ -33,6 +33,10 @@ class Graph{
         
     }
 
+    hasCycles(){
+        return this.graph.heap.top().getValue() > 0;
+    }
+
 
 
 }
