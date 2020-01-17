@@ -16,14 +16,14 @@ class Template{
 
         // this is the required imports
         this.imports = "";
-
+        this.TAB = "    ";
         // this is the header of the class
         this.head = "class Model(";
         this.subclass = "";
         this.headEnd = "):\n";
         // this is the constructor of the class
-        this.init = "def __init__(self):\n" +
-                    "    super(Model, self).__init__()\n";
+        this.init = "def __init__(self):\n" + this.TAB +
+                    "super(Model, self).__init__()\n";
         this.layers = "";
         this.layerNames = [];
         this.initEnd = "\n";
@@ -33,7 +33,7 @@ class Template{
         this.callName = "";
         this.callParameters = "(self, x):\n";
         this.calls = "";
-        this.callEnd = "return x \n";
+        this.callEnd = this.TAB + "return x \n";
         this.file = "";
     }
 

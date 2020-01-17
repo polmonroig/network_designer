@@ -28,7 +28,7 @@ class CodeGenerator{
 
     generate(){
         this.template.build();
-        console.log(this.template);
+        console.log(this.template.getFile());
     }
 
     getFile(){
