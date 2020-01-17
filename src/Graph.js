@@ -7,6 +7,8 @@ class Graph{
     constructor(data){
         // save the number of nodes in the graph
         this.nNodes = data.length;
+        // heap contains an ordered version of the nodes
+        this.heap = new MinHeap();
         // nodes contains information of each node
         this.nodes = new Array(this.nNodes);
         // graph contains information of the graph distribution
@@ -15,20 +17,19 @@ class Graph{
         for(let i = 0; i < this.nNodes; ++i){
             let id = data[i].index;
             this.nodes[id] = new Node(id, data[i]);
+
             // initialize empty array
             this.graph[id] = [];
             let connections = data[i].outputPorts.data[0].connections.data;
-            for(let j = 0; j < connections.length; ++j){
+            for(let j = 0; j < connections.length; ++j) {
                 let targetNode = connections[j].targetPort.parent;
                 this.graph[id].push(targetNode.index);
+                this.nodes[targetNode.index].addReference();
             }
         }
-
-
-
-
-
-
+        // finally add all the nodes to the queue
+        for(let i = 0; i < this.nNodes; ++i)this.heap.push(this.nodes[i]);
+        
     }
 
 

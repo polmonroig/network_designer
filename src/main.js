@@ -79,7 +79,9 @@ document.addEventListener("DOMContentLoaded",function () {
     document.getElementById("pytorch-button").addEventListener("click", function(){
         // Generate download of hello.txt file with some content
         var text = "import torch";
-        var filename = "network.py";
+
+
+        let filename = "network.py";
 
         download(filename, text);
     }, false);

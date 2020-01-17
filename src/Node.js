@@ -16,6 +16,10 @@ class Node{
         return this.value;
     }
 
+    addReference(){
+        this.value++;
+    }
+
     getID(){
         return this.id;
     }
