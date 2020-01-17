@@ -27,9 +27,19 @@ class CodeGenerator{
     }
 
     generate(){
-        // add layers
-        for(let i = 0; i < this.graph.nNodes; ++i)
+        // add graph data
+        let varibles = ["x"];
+        for(let i = 0; i < this.graph.nNodes; ++i){
+            // add layer
             this.template.addLayer(this.graph.nodes[i]);
+            // add connections (calls)
+            // get next layer and remove from queue
+            let layer = this.graph.heap.top();
+            this.graph.heap.pop();
+            varibles.push(varibles[i] + i);
+            this.template.addCall(varibles[i + 1], varibles[i], layer);
+
+        }
 
 
         // finally build the file

@@ -42,8 +42,9 @@ class Template{
         this.layers += "";
     }
 
-    addCall(){
-        this.calls += "";
+    addCall(inVar, outVar, node){
+        this.calls += this.DTAB + outVar +" = "
+            + node.name + "("+ inVar + ")";
     }
 
     // this class concatenates all the strings
@@ -51,7 +52,7 @@ class Template{
         this.head = this.head + this.subclass + this.headEnd;
         this.init = this.init + this.layers + this.initEnd;
         this.call = this.call + this.callName + this.callParameters + this.calls + this.callEnd; // needs
-        this.file = this.imports + this.head + this.init + this.call;
+        this.file = this.imports + "\n" + this.head + this.init + this.call;
     }
 
     getFile(){
@@ -66,10 +67,6 @@ class TensorflowTemplate extends Template{
         this.imports = "from tensorflow.keras import Model\n" +
                        "import tensorflow.keras.layers as layers\n";
         this.subclass = "Model";
-    }
-
-    addCall(){
-
     }
 
     addLayer(node) {
@@ -91,4 +88,6 @@ class PytorchTemplate extends Template{
         this.layers += this.DTAB + node.name +
             " = nn."+ node.type + "()\n";
     }
+
+
 }
