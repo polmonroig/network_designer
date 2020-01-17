@@ -26,10 +26,11 @@ class CodeGenerator{
         }
     }
 
-    getFile(){
-        // generate file from graph
+    generate(){
 
-        // return file
+    }
+
+    getFile(){
         this.template.getFile();
     }
 

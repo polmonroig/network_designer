@@ -78,8 +78,14 @@ document.addEventListener("DOMContentLoaded",function () {
 
     document.getElementById("pytorch-button").addEventListener("click", function(){
         // Generate download of hello.txt file with some content
-        let text = "import torch";
+
         let network = new Graph(app.view.getFigures().data);
+        let generator = new CodeGenerator();
+        generator.setGraph(network);
+        generator.setTemplate(generator.PYTORCH);
+        generator.generate();
+        let text = generator.getFile();
+
         if(network.hasCycles()){
             console.log("Cicles found!!!!");
         }
