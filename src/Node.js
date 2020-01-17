@@ -3,13 +3,19 @@
  *  a graph, such as its name, id, config, etc.
  * */
 class Node{
-    constructor(id, info){
-        this.id = id;
+    constructor(){
+        this.value = 0;
+        this.name = null;
+        this.type = null;
+        this.attributes = null;
+        this.info = null;
+    }
+
+    setInfo(info){
         this.name = info.label.text;
         this.type = info.type;
         this.attributes = info.attributes;
         this.info = info;
-        this.value = 0;
     }
 
     getValue(){
@@ -20,7 +26,4 @@ class Node{
         this.value++;
     }
 
-    getID(){
-        return this.id;
-    }
 }

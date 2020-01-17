@@ -7,24 +7,20 @@
 class MinHeap{
 
     constructor(){
-        this.heap = [];
+        this.heap = [null];
         this.size = 0;
     }
 
     push(x){
         this.size++;
-        if(this.size === 1){
-            this.heap.push(null);
-            this.heap.push(x);
-        }
-        else{
-            self.heap.push(x);
+        this.heap.push(x);
+        if(this.size > 1){
             this.insert_element(this.size);
         }
     }
 
     top(){
-        return this.heap[0];
+        return this.heap[1];
     }
 
     remove_element(pos){
@@ -45,14 +41,16 @@ class MinHeap{
         this.heap[pos] = element;
     }
 
+
     insert_element(pos){
-        let newPos = Math.floor(pos / 2);
-        if(newPos > 0 && this.heap[newPos].getValue() > this.heap[pos].getValue()){
-            // swap values
-            let aux = this.heap[newPos];
-            this.heap[newPos] = this.heap[pos];
-            this.heap[pos] = aux;
-            this.insert_element(newPos);
+        let parent = Math.floor(pos / 2);
+
+        while(pos > 1 && this.heap[pos].getValue() < this.heap[parent].getValue()){
+            // swap parent with son
+            [this.heap[pos], this.heap[parent]] = [this.heap[parent], this.heap[pos]];
+            // update values
+            pos = parent;
+            parent = Math.floor(pos / 2);
         }
     }
 

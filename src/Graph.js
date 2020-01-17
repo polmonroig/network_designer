@@ -11,12 +11,13 @@ class Graph{
         this.heap = new MinHeap();
         // nodes contains information of each node
         this.nodes = new Array(this.nNodes);
+        for(let i = 0; i < this.nNodes; ++i)this.nodes[i] = new Node();
         // graph contains information of the graph distribution
         this.graph = new Array(this.nNodes);
         // fill array contents
         for(let i = 0; i < this.nNodes; ++i){
             let id = data[i].index;
-            this.nodes[id] = new Node(id, data[i]);
+            this.nodes[id].setInfo(data[i]);
 
             // initialize empty array
             this.graph[id] = [];
