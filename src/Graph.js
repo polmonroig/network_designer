@@ -2,7 +2,7 @@
  * The graph class converts the visual network into a
  * structured graph to enable an easier navigability for
  * a later code generation
- * */
+ * */ 
 class Graph{
     constructor(data){
         // save the number of nodes in the graph
